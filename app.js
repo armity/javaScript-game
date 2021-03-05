@@ -2,6 +2,8 @@
 const container = document.querySelector('.container');
 const button = document.querySelector('button');
 console.log(container);
+let counter = 0
+
 
 let openCard = [];
 const unmatched = () => {
@@ -61,6 +63,13 @@ const memoryGame = () => {
       // currentImage.className
       console.log(currentImage.className);
 
+      counter ++
+      if (counter == 20) {
+        console.log("Game Over");
+        const element = document.createElement('h2');
+        element.innerHTML = "Game Over"
+        document.body.appendChild(element);
+      }
       // const openCards = () => {
         
       openCard.push(currentImage.className);
@@ -76,29 +85,42 @@ const memoryGame = () => {
         }, 2000);
         
         console.log(openCard);
-
-      // button.addEventListener('click', () => {
-      //     const shuffledCards = shuffle(currentImage);
-      //     for (let index = 0; index < array.length; index++) {
-      //       const element = array[index];
-            
-      //     }
-      //     for (let i= 0; i < shuffledCards.length; i++){
-             
-      //        });
-      }
     }
-    });
+  }
+});
+  
+  const replay = () => {
+    const playedCards = document.querySelectorAll('img')
+    for (let i= 0; i < playedCards.length; i++) {
+      playedCards[i].style.visibility = "hidden"
+    }
+  
+    const shuffle = (array) => {
+    return array.sort(() => Math.random() - 0.5);
+    }
+    const shuffleCards = () => {
+    const tags = document.getElementsByTagName('div');
+    const result = shuffle([...tags]);
+     result.forEach(res => container.appendChild(res))
+    }
+   shuffleCards()
+  }
 
-    
+  
+
+    button.addEventListener('click', () => {
+      replay()
+      
+  });
+
   
     container.appendChild(box);
   }
 
+
   
-       
-          
+  
+
 }
-    
 
 memoryGame();

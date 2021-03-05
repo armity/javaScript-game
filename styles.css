@@ -48,3 +48,14 @@ img {
   border: 5px solid red;
   /* display: none; */
 }
+
+h2 {
+margin-left: 300px;
+text-align: center;
+color: red;
+font-weight: bolder;
+font-size: 100px;
+position: absolute;
+/* transform: rotate(270deg); */
+
+}
